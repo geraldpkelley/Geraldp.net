@@ -232,7 +232,7 @@ main{
     transform-origin:center;
     z-index:-1;
 
-    --lines-duration:3s;
+    --lines-duration:3.5s;
     --lines-delay:1.4s;
 }
 
@@ -306,6 +306,13 @@ main{
     animation-delay:var(--lines-delay);
     animation-fill-mode:forwards;
 }
+.lines:nth-child(3n) > div{
+    animation-duration: 2.5s;
+}
+
+.lines:nth-child(4n) > div{
+    animation-duration: 5s;
+}
 
 @media (max-width:1300px) and (orientation:landscape){
     main{
@@ -334,10 +341,10 @@ main{
 /*********  Portfolio Sections  ************/
 
 .portfolio{
-    --portfolio-black:#000022;
+    /*  Default colors are game dev  */
+    --portfolio-black:#09090E;
     --portfolio-dark:#192E5F;
-    --portfolio-grey:#5A8BCD;
-    --portfolio-light:#C1C9DE;
+    --portfolio-light:#b3b7be;
     --portfolio-white:#F6F4FA;
 
 
@@ -350,6 +357,28 @@ main{
     top:0px;
     left:0;
 
+    display:none;
+}
+
+.portfolio-illustrator{
+    --portfolio-black:#161210;
+    --portfolio-dark:#94320b;
+    --portfolio-light:#c4b0a7;
+    --portfolio-white:#fff1eb;
+}
+
+.portfolio-webDesign{
+    --portfolio-black:#11181A;
+    --portfolio-dark:#01545F;
+    --portfolio-light:#9FB1B3;
+    --portfolio-white:#eafdff;
+}
+
+.portfolio-aboutMe{
+    --portfolio-black:#110E0E;
+    --portfolio-dark:#520029;
+    --portfolio-light:#ACA4A8;
+    --portfolio-white:#ffecf6;
 }
 
 .portfolio-nav-wrapper{
