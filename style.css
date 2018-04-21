@@ -419,13 +419,18 @@ main{
     color:var(--portfolio-light);
 }
 
+.socialLinks-wrapper{
+    width:100%;
+    position:absolute;
+    bottom:0.46vh;
+}
+
 .socialLinks{
+    width:20.1vh;
     margin:0;
     margin-left:auto;
     margin-right:auto;
-    padding-left:4vh;
-    position:absolute;
-    bottom:0.46vh;
+    padding:0;
 }
 
 .socialLinks li{
@@ -470,6 +475,12 @@ main{
 
 .portfolio-x a:hover{
     color:var(--portfolio-white);
+}
+
+@media (min-width:1001px){
+    .portfolio-main > .socialLinks-wrapper{
+        display:none;
+    }
 }
 
 @media (max-width:1000px){
