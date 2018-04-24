@@ -48,7 +48,7 @@ ul{
 /*********  Main Menu  ************/
 main{
     width:650px;
-    height:770px;
+    height:2000px;
     margin:40vh 50% 0;
     position:relative;
     right:325px;
@@ -354,31 +354,43 @@ main{
     height:100vh;
     box-sizing:border-box;
     position:absolute;
-    top:0px;
-    left:0;
+    top:0vh;
+    left:100vw;
 
-    display:none;
+    transition-duration:0.8s;
+    transition-timing-function: ease;
+
+    overflow:hidden;
 }
 
-.portfolio-illustrator{
+#portfolio-illustrator{
     --portfolio-black:#161210;
     --portfolio-dark:#94320b;
     --portfolio-light:#c4b0a7;
     --portfolio-white:#fff1eb;
+
+    top:100vh;
+    left:0vw;
 }
 
-.portfolio-webDesign{
+#portfolio-webDesigner{
     --portfolio-black:#11181A;
     --portfolio-dark:#01545F;
     --portfolio-light:#9FB1B3;
     --portfolio-white:#eafdff;
+
+    top:0vh;
+    left:-100vw;
 }
 
-.portfolio-aboutMe{
+#portfolio-aboutMe{
     --portfolio-black:#110E0E;
     --portfolio-dark:#520029;
     --portfolio-light:#ACA4A8;
     --portfolio-white:#ffecf6;
+
+    top:-100vh;
+    left:0vw;
 }
 
 .portfolio-nav-wrapper{
