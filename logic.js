@@ -16,7 +16,8 @@
         var wrapper = $(whichSection + " .portfolio-nav-wrapper");
 
         $(whichSection).css({top: "0", left: "0"});
-        if (wrapper.position().left == 0){
+        console.log(wrapper.position());
+        if (Math.floor(wrapper.position().left) == 0){  //Math.floor() is used because Firefox keeps registering very small fractions of of a pixel when 0.
              AnimatePortfolioNav(whichSection);
         }
     }
@@ -31,7 +32,7 @@
         var wrapper = $(whichSection + " .portfolio-nav-wrapper");
         setTimeout(function(){
             $(whichSection).css({top:"0", left:"0"});
-            if (wrapper.position().left == 0){
+            if (Math.floor(wrapper.position().left) == 0){
                 AnimatePortfolioNav(whichSection);
             }
         }, 400);
