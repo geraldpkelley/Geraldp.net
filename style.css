@@ -19,7 +19,7 @@ body, html{
 
 body{
     font-family:'Raleway', sans-serif;
-    font-weight:200;
+    font-weight:300;
     width:100%;
     height:100%;
     box-sizing:border-box;
@@ -350,7 +350,7 @@ main{
 .portfolio{
     /*  Default colors are game dev  */
     /*--portfolio-black:#09090E;*/
-    --portfolio-black:#313138;
+    --portfolio-black:#2c2c3b;
     --portfolio-dark:#192E5F;
     --portfolio-light:#b3b7be;
     --portfolio-white:#F6F4FA;
@@ -374,7 +374,7 @@ main{
 }
 
 #portfolio-illustrator{
-    --portfolio-black:#36312d;
+    --portfolio-black:#352c24;
     --portfolio-dark:#94320b;
     --portfolio-light:#d8bdb1;
     --portfolio-white:#fff1eb;
@@ -385,7 +385,7 @@ main{
 }
 
 #portfolio-webDesigner{
-    --portfolio-black:#31333a;
+    --portfolio-black:#2c2f3a;
     --portfolio-dark:#01545F;
     --portfolio-light:#9FB1B3;
     --portfolio-white:#eafdff;
@@ -396,7 +396,7 @@ main{
 }
 
 #portfolio-aboutMe{
-    --portfolio-black:#3a3434;
+    --portfolio-black:#352727;
     --portfolio-dark:#520029;
     --portfolio-light:#ACA4A8;
     --portfolio-white:#ffecf6;
@@ -532,10 +532,6 @@ main{
     position:relative;
 }
 
-/*.portfolio-main .socialLinks li:hover svg{
-    fill:var(--portfolio-black);
-}*/
-
 @keyframes portfolio-nav-nameSlideIn{
     0%{
         transform:translateY(0);
@@ -594,6 +590,7 @@ main{
     height:100vh;
     margin-left:28rem;
     border-left:1px solid var(--portfolio-light);
+    box-sizing:border-box;
 
 
     overflow-y:scroll;
@@ -679,37 +676,38 @@ main{
 
 /*********  Portfolio Images  ***********/
 
-.portfolio-example-singleColumn{
-    color:var(--portfolio-dark);
-    width:80%;
-
-    margin:8vh auto;
-    display:block;
-}
-
-.portfolio-example-singleColumn figure{
+figure{
+    margin:0;
     border:2px solid var(--portfolio-light);
     box-shadow:2px 3px 5px var(--portfolio-light);
-    margin:0;
-
+    
     position:relative;
-
     overflow:hidden;
 }
 
-.portfolio-example-singleColumn img{
+.portfolio-item-singleCol{
+    color:var(--portfolio-dark);
+    width:100%;
+    box-sizing:border-box;
+
+    margin:0 auto;
+    padding:10px;
+    display:block;
+}
+
+.portfolio-item-singleCol:last-child, .row:last-child{
+    padding-bottom:30px;
+}
+
+.portfolio-item-singleCol img{
     width:100%;
     height:auto;
     margin:0;
     display:block;
 }
 
-.portfolio-example-singleColumn figure{
-    position:relative;
-}
-
-.portfolio-example-singleColumn-address{
-    font-size:2em;
+.portfolio-item-singleCol-address{
+    font-size:2.5em;
     font-weight:300;
     margin:5px 0 0 10px;
     display:block;
@@ -724,27 +722,156 @@ main{
     width:100%;
     box-sizing:border-box;
 
-    bottom:-100%;
+    bottom:0;
     position:absolute;
 
     padding:20px 35px;
 
     background:var(--portfolio-caption);
 
-
+    transform:translateY(100%);
     
-    transition-duration:1s;
+    transition-duration:0.8s;
     transition-timing-function:ease;
 }
 
-.portfolio-example-singleColumn figure:hover > .img-caption{
-    bottom:0;
+figure:hover > .img-caption{
+    transform:translateY(0%);
 }
 
-.portfolio-example-singleColumn figure > .img-caption span{
+figure > .img-caption span{
     display:block;
     margin-bottom:0px;
 }
+
+
+.row{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    max-width:1450px;
+    margin:0 auto;
+}
+
+.row:nth-child(2n){
+    flex-direction:row-reverse;
+}
+
+.portfolio-item{
+    display:block;
+    padding:10px;
+}
+
+.portfolio-item:nth-child(1){
+    flex:64;
+}
+
+.portfolio-item:nth-child(2){
+    flex:36;
+}
+
+.portfolio-item img{
+    max-width:100%;
+    max-height:100%;
+    display:block;
+}
+
+.portfolio-item-gameDev{
+    min-height:420px;
+
+    margin:200px 20px;
+    overflow:visible;
+}
+
+.portfolio-item-gameDev:first-of-type{
+    margin-top:110px;
+}
+
+.paleoGameIcon{
+    background:url('images/gameDeveloper/paleoGame/PaleoGame_icon.png');
+}
+
+.abzorbIcon{
+    background:url('images/gameDeveloper/abzorb/Abzorb_icon.png');
+}
+
+.dudeskiIcon{
+    background:url('images/gameDeveloper/dudeski/Dudeski_icon.png');
+}
+
+.game-img{
+    width:512px;
+    max-width:40%;
+
+    margin:-46px 20px 20px 1vw;
+    background-size:100%;
+    background-repeat:no-repeat;
+    background-position:left;
+
+    float:left;
+}
+
+.game-img::before{
+    content:"";
+    padding-top:100%;
+    display:inline-block;
+}
+
+.game-title, .game-description{
+    color:var(--portfolio-black);
+}
+
+.game-title{
+    font-size:5rem;
+    line-height:65%;
+    font-weight:500;
+
+    padding-top:2.5rem;
+    border-bottom:2px solid var(--portfolio-light);
+}
+
+.game-description{
+    font-size:2.3rem;
+    line-height:140%;
+    font-weight:300;
+
+    padding:4rem 7rem;
+}
+
+.btn-game-wrapper{
+    text-align:center;
+    margin-bottom:3rem;
+}
+
+.btn-game{
+    color:var(--portfolio-black);
+    font-size:2.5rem;
+
+    padding:1rem 4rem;
+    border:1px solid var(--portfolio-light);
+    background:white;
+
+    position:relative;
+
+    z-index:1;
+}
+
+.btn-game::before{
+    content:"";
+    
+    border:1px solid var(--portfolio-light);
+
+    top:0; right:0; bottom:0; left:0;
+    position:absolute;
+
+    transform:translate(5px, 5px);
+
+    z-index:-1;
+}
+
+
+
 
 
 
@@ -764,9 +891,6 @@ main{
 /*********  Media Queries  ***********/
 
 @media (min-width:1001px){
-    /*.portfolio-main > .socialLinks-wrapper{
-        display:none;
-    }*/
 
     .portfolio-main > .btn-x{
         right:30px;
@@ -787,7 +911,6 @@ main{
     }
 
     .portfolio-nav-wrapper{
-        /*transform:translateX(-100%);*/
         margin-left:-26rem;
         z-index:11;
     }
@@ -806,21 +929,66 @@ main{
 
     .portfolio-main{
         margin:0;
+        padding-top:30px;
         border:0;
         outline:1px solid var(--portfolio-dark);
         outline-offset:-10px;
     }
 
-    .portfolio-example-singleColumn figure{
+    .portfolio-item-singleCol{
+        width:100%;
+        padding:30px 20px;
+        box-sizing:border-box;
+    }
+
+    figure{
         position:static;
+    }
+
+    #portfolio-webDesigner img{
+        width:130%;
+        margin-left:-15%;
+    }
+
+    #chatterbox img{
+        margin-left:-5%;
     }
 
     .img-caption{
+        color:var(--portfolio-black);
         font-size:17px;
         padding:15px 20px;
+        background:white;
+        border-top:1px solid var(--portfolio-dark);
 
         height:auto;
         position:static;
+
+        transform:none;
     }
 
+    figure:hover > .img-caption{
+        transform:none;
+    }
+
+    .row, .row:nth-child(2n){
+        flex-direction:column;
+    }
+
+    .portfolio-item{
+        flex:1;
+        max-width:100%;
+        box-sizing:border-box;
+
+        margin-top:0px;
+        padding:30px 20px 0;
+    }
+
+}
+
+.test{
+    background:red;
+    box-sizing:border-box;
+    width:512px;
+    height:512px;
 }
