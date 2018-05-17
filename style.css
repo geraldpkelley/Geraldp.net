@@ -353,7 +353,7 @@ main{
     --portfolio-black:#2c2c3b;
     --portfolio-dark:#192E5F;
     --portfolio-light:#b3b7be;
-    --portfolio-white:#F6F4FA;
+    --portfolio-white:#f4f4fa;
     --portfolio-caption:#192e5fe6;
 
 
@@ -832,7 +832,7 @@ figure > .img-caption span{
 }
 
 .game-description{
-    font-size:2.3rem;
+    font-size:2.4rem;
     line-height:140%;
     font-weight:300;
 
@@ -854,13 +854,16 @@ figure > .img-caption span{
 
     position:relative;
 
+    transition-duration:0.3s;
+    transition-timing-function:ease;
+
     z-index:1;
 }
 
 .btn-game::before{
     content:"";
     
-    border:1px solid var(--portfolio-light);
+    border:inherit;
 
     top:0; right:0; bottom:0; left:0;
     position:absolute;
@@ -868,6 +871,93 @@ figure > .img-caption span{
     transform:translate(5px, 5px);
 
     z-index:-1;
+}
+
+.btn-game:hover{
+    border-color:var(--portfolio-dark);
+}
+
+
+
+
+
+/************    Lightbox    ****************/
+
+.lightbox-back{
+    width:100vw;
+    height:100vh;
+    box-sizing:border-box;
+    
+    background:#00000180;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    top:0;
+    left:0;
+    position:absolute;
+}
+
+.lightbox-back{
+    display:none;
+}
+
+.btn-lightbox-left, .btn-lightbox-right{
+    color:white;
+    font-size:9rem;
+    line-height:9rem;
+    text-align:right;
+    
+
+    width:13rem;
+    height:13rem;
+
+    margin:0vw;
+    padding:0;
+    border:none;
+    outline:none;
+    background:transparent;
+
+    transition-duration:0.4s;
+    transition-timing-function:ease;
+}
+
+.btn-lightbox-right{
+    text-align:left;
+}
+
+.btn-lightbox-left:hover, .btn-lightbox-right:hover{
+    color:#f58fba;
+}
+
+.lightbox-back .btn-x{
+    color:white;
+}
+
+.lightbox-back .btn-x:hover{
+    color:#f58fba;
+}
+
+.lightbox-back > div{
+    text-align:center;
+
+    max-width:73vw;
+    max-height:80vh;
+}
+
+.lightbox-back img{
+    max-width:73vw;
+    max-height:80vh;
+}
+
+.lightbox-caption{
+    color:white;
+    font-size:2.5rem;
+    font-weight:300;
+    text-align:center;
+
+    margin:1rem 0;
 }
 
 
@@ -889,6 +979,12 @@ figure > .img-caption span{
 
 
 /*********  Media Queries  ***********/
+
+@media (max-width:1280px){
+    .game-title{
+        font-size:3.4rem;
+    }
+}
 
 @media (min-width:1001px){
 
@@ -982,6 +1078,32 @@ figure > .img-caption span{
 
         margin-top:0px;
         padding:30px 20px 0;
+    }
+
+    .portfolio-item-gameDev{
+        min-height:270px;
+
+        margin-top:100px;
+        margin-bottom:30px;
+    }
+
+    .portfolio-item-gameDev:first-of-type{
+        margin-top:80px;
+    }
+
+    .game-title{
+        font-size:4.3rem;
+        line-height:80%;
+    }
+
+    .game-description{
+        font-size:3rem;
+
+        padding:2rem 3rem;
+    }
+
+    .btn-game-wrapper{
+        margin:4rem 0;
     }
 
 }
