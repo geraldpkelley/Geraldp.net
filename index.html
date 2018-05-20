@@ -70,7 +70,7 @@
         </div>
     </main>
 
-    <section class="portfolio" id="portfolio-gameDev">
+    <section class="portfolio hide" id="portfolio-gameDev">
         <nav class="portfolio-nav-wrapper">
             <div class="portfolio-nav-name ralewayMd">Gerald Kelley</div>
         
@@ -141,7 +141,7 @@
         </div>
     </section>
 
-    <section class="portfolio" id="portfolio-illustrator">
+    <section class="portfolio hide" id="portfolio-illustrator">
             <nav class="portfolio-nav-wrapper">
                 <div class="portfolio-nav-name ralewayMd">Gerald Kelley</div>
             
@@ -192,7 +192,7 @@
             </div>
         </section>
 
-        <section class="portfolio" id="portfolio-webDesigner">
+        <section class="portfolio hide" id="portfolio-webDesigner">
                 <nav class="portfolio-nav-wrapper">
                     <div class="portfolio-nav-name ralewayMd">Gerald Kelley</div>
                 
@@ -276,7 +276,7 @@
                 </div>
             </section>
 
-            <section class="portfolio" id="portfolio-aboutMe">
+            <section class="portfolio hide" id="portfolio-aboutMe">
                     <nav class="portfolio-nav-wrapper">
                         <div class="portfolio-nav-name ralewayMd">Gerald Kelley</div>
                     
@@ -327,13 +327,14 @@
                     </div>
                 </section>
 
-                <div class="lightbox-back">
-                    <button class="btn-lightbox-left">&#9665;</button>
+                <div class="lightbox-back displayNone" id="lightbox">
+                    <button id="btn-lightbox-left">&#9665;</button>
                     <div>
-                        <img src="images/illustrator/PaleoGame_ELPermian.jpg" alt="">
-                        <div class="lightbox-caption">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</div>
+                        <img src="images/illustrator/PaleoGame_ELPermian.jpg" alt="" id="lightbox-img">
+                        <div id="lightbox-caption">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</div>
+                        <div id="lightbox-thumbnail-wrapper"></div>
                     </div>    
-                    <button class="btn-lightbox-right">&#9655;</button>
+                    <button id="btn-lightbox-right">&#9655;</button>
                     
                     <div class="btn-x"><a href="#">&#x2715</a></div>
                 </div>

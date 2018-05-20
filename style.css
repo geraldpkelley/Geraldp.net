@@ -354,7 +354,7 @@ main{
     --portfolio-dark:#192E5F;
     --portfolio-light:#b3b7be;
     --portfolio-white:#f4f4fa;
-    --portfolio-caption:#192e5fe6;
+    --portfolio-caption:rgba(25, 47, 96, 0.902);
 
 
     background:white;
@@ -378,7 +378,7 @@ main{
     --portfolio-dark:#94320b;
     --portfolio-light:#d8bdb1;
     --portfolio-white:#fff1eb;
-    --portfolio-caption:#94320be6;
+    --portfolio-caption:rgba(148, 50, 11, 0.902);
 
     top:100vh;
     left:0vw;
@@ -389,7 +389,7 @@ main{
     --portfolio-dark:#01545F;
     --portfolio-light:#9FB1B3;
     --portfolio-white:#eafdff;
-    --portfolio-caption:#01545Fe6;
+    --portfolio-caption:rgba(1, 84, 95, 0.902);
 
     top:0vh;
     left:-100vw;
@@ -400,7 +400,7 @@ main{
     --portfolio-dark:#520029;
     --portfolio-light:#ACA4A8;
     --portfolio-white:#ffecf6;
-    --portfolio-caption:#520029e6;
+    --portfolio-caption:rgba(82, 0, 41, 0.902);
 
     top:-100vh;
     left:0vw;
@@ -888,22 +888,21 @@ figure > .img-caption span{
     height:100vh;
     box-sizing:border-box;
     
-    background:#00000180;
+    background:rgba(0, 0, 1, 0.788);
 
     display:flex;
-    justify-content:center;
+    justify-content:space-between;
     align-items:center;
 
     top:0;
     left:0;
     position:absolute;
+
+
+    z-index:20;
 }
 
-.lightbox-back{
-    display:none;
-}
-
-.btn-lightbox-left, .btn-lightbox-right{
+#btn-lightbox-left, #btn-lightbox-right{
     color:white;
     font-size:9rem;
     line-height:9rem;
@@ -919,16 +918,23 @@ figure > .img-caption span{
     outline:none;
     background:transparent;
 
-    transition-duration:0.4s;
-    transition-timing-function:ease;
+    cursor:pointer;
 }
 
-.btn-lightbox-right{
+#btn-lightbox-right{
     text-align:left;
 }
 
-.btn-lightbox-left:hover, .btn-lightbox-right:hover{
+#btn-lightbox-left:hover, #btn-lightbox-right:hover{
     color:#f58fba;
+}
+
+.hide{
+    visibility:hidden;
+}
+
+.displayNone{
+    display:none;
 }
 
 .lightbox-back .btn-x{
@@ -951,13 +957,23 @@ figure > .img-caption span{
     max-height:80vh;
 }
 
-.lightbox-caption{
+#lightbox-caption{
     color:white;
     font-size:2.5rem;
-    font-weight:300;
+    font-weight:500;
     text-align:center;
 
     margin:1rem 0;
+}
+
+#lightbox-thumbnail-wrapper{
+    display:flex;
+    justify-content:space-evenly;
+    align-items:center;
+}
+
+.lightbox-thumbnail{
+    
 }
 
 
@@ -1104,6 +1120,10 @@ figure > .img-caption span{
 
     .btn-game-wrapper{
         margin:4rem 0;
+    }
+
+    #lightbox-thumbnail-wrapper{
+        display:none;
     }
 
 }
