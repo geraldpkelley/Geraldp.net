@@ -13,7 +13,8 @@ html{
     font-size:62.5%;
 }
 
-body, html{
+body,
+html{
     overflow:hidden;
 }
 
@@ -334,7 +335,7 @@ main{
 }
 
 @media (max-width:650px),
-(max-width:900px) and (orientation:landscape) {
+        (max-width:900px) and (orientation:landscape) {
     main{
         transform:scale(0.4);
     }
@@ -695,7 +696,8 @@ figure{
     display:block;
 }
 
-.portfolio-item-singleCol:last-child, .row:last-child{
+.portfolio-item-singleCol:last-child,
+.row:last-child{
     padding-bottom:30px;
 }
 
@@ -810,6 +812,8 @@ figure > .img-caption span{
     background-position:left;
 
     float:left;
+
+    cursor:pointer;
 }
 
 .game-img::before{
@@ -818,7 +822,8 @@ figure > .img-caption span{
     display:inline-block;
 }
 
-.game-title, .game-description{
+.game-title,
+.game-description{
     color:var(--portfolio-black);
 }
 
@@ -842,6 +847,8 @@ figure > .img-caption span{
 .btn-game-wrapper{
     text-align:center;
     margin-bottom:3rem;
+
+    z-index:1;
 }
 
 .btn-game{
@@ -857,7 +864,7 @@ figure > .img-caption span{
     transition-duration:0.3s;
     transition-timing-function:ease;
 
-    z-index:1;
+    z-index:auto;
 }
 
 .btn-game::before{
@@ -888,7 +895,8 @@ figure > .img-caption span{
     height:100vh;
     box-sizing:border-box;
     
-    background:rgba(0, 0, 1, 0.788);
+    background:#221c20;
+    background:rgba(12, 11, 12, 0.8);
 
     display:flex;
     justify-content:space-between;
@@ -902,7 +910,8 @@ figure > .img-caption span{
     z-index:20;
 }
 
-#btn-lightbox-left, #btn-lightbox-right{
+#btn-lightbox-left,
+#btn-lightbox-right{
     color:white;
     font-size:9rem;
     line-height:9rem;
@@ -925,7 +934,8 @@ figure > .img-caption span{
     text-align:left;
 }
 
-#btn-lightbox-left:hover, #btn-lightbox-right:hover{
+#btn-lightbox-left:hover,
+#btn-lightbox-right:hover{
     color:#f58fba;
 }
 
@@ -952,7 +962,16 @@ figure > .img-caption span{
     max-height:80vh;
 }
 
-.lightbox-back img{
+#lightbox-loading{
+    font-size:5rem;
+    color:var(--red);
+    text-align:center;
+    line-height:50vh;
+
+    height:50vh;
+}
+
+.lightbox-back img, .lightbox-img{
     max-width:73vw;
     max-height:80vh;
 }
@@ -1013,6 +1032,50 @@ figure > .img-caption span{
 
     .btn-backArrow{
         display:none;
+    }
+
+    #ArtBashGraphic figure{
+        background-image:url("images/illustrator/ArtBashGraphic.jpg");
+        background-size:115%;
+        background-repeat:no-repeat;
+        background-position:50% 42%;
+    }
+
+    #Rocky figure{
+        background-image:url("images/illustrator/Rocky.jpg");
+        background-size:100%;
+        background-repeat:no-repeat;
+        background-position:50% 40%;
+    }
+
+    #PaleoGame_title figure{
+        background-image:url("images/illustrator/PaleoGame_title.jpg");
+        background-size:135%;
+        background-repeat:no-repeat;
+        background-position:right;
+    }
+
+    #ArtBashGraphic figure::before,
+    #Rocky figure::before,
+    #PaleoGame_title figure::before{
+        content:"";
+        padding-top:100%;
+        display:inline-block;
+    }
+
+    #Rocky figure::before{
+        padding-top:56%;
+    }
+
+    #ArtBashGraphic img,
+    #Rocky img,
+    #PaleoGame_title img{
+        display:none;
+    }
+
+    .clickForFullImage{
+        font-size:0.7em;
+        font-style:italic;
     }
 }
 
@@ -1083,7 +1146,8 @@ figure > .img-caption span{
         transform:none;
     }
 
-    .row, .row:nth-child(2n){
+    .row,
+    .row:nth-child(2n){
         flex-direction:column;
     }
 
@@ -1101,6 +1165,11 @@ figure > .img-caption span{
 
         margin-top:100px;
         margin-bottom:30px;
+    }
+
+    #ArtBashGraphic .clickForFullImage,
+    #Rocky .clickForFullImage{
+        display:none;
     }
 
     .portfolio-item-gameDev:first-of-type{

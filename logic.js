@@ -1,5 +1,4 @@
 (function (){
-    var lightbox = $("#lightbox");
     var currentSection = "";
 
     $(".menu > li").click(MainMenuClick);
@@ -89,13 +88,6 @@
         
     }
 
-    function XOutLightboxClick(e){
-        console.log(e.currentTarget);
-
-        if (e.currentTarget.id == "lightbox")
-            lightbox.toggleClass("displayNone");
-    }
-
     function ResetNavMenuSlide(section){
         //$(section + " .portfolio-nav-wrapper").css({"transform": ""});
         $(section + " .portfolio-nav-wrapper").css("margin-left", "");
@@ -109,24 +101,24 @@
 
     //These are the file names - description pairings for each of the portfolio pieces. They will be input into urls later.
     var illustratorImgs = [
-        "ArtBashGraphic_desktop",
+        "ArtBashGraphic",
         "GeorgeHufnagl",
         "PaleoGame_ELPermian",
         "PaleoGame_LLPermian",
         "PaleoGame_MTriassic",
-        "PaleoGame_title_desktop",
-        "Rocky_desktop",
+        "PaleoGame_title",
+        "Rocky",
         "WhitakerTrebella"
     ];
 
     var illustratorDescriptions = [
-        "<span><strong>Finish Him!</strong></span><br>My submission for <strong>Bit Bash: Art Bash 2014</strong>.",
+        "<span><strong>Finish Him!</strong></span><br>My submission for <strong>Bit Bash: Art Bash 2014</strong>, a risograph poster competition.<br><span class='clickForFullImage'>Click for full image</span>",
         "<strong>George Hufnagl, Sound Designer</strong>.",
         "<span>Another piece made for the educational game, <strong>Paleontology Manager</strong>, illustrating the Permian period in Earth's history.</span><br>The scene is of an ancient lake that used to exist in Southern Tanzania. An extinct species of dicynodonts, ancient human ancestors, are foraging in the foreground.",
         "<span>Another piece made for the educational game, <strong>Paleontology Manager</strong>, illustrating the Permian period in Earth's history.</span><br>The scene is of an ancient flood plain that used to exist in Southern Tanzania. In the foreground, the long since extinct species of dicynodonts, <strong>diictodon</strong>, are in conflict over a burrow.",
         "<span>A piece made for the educational game, <strong>Paleontology Manager</strong>, illustrating the Middle Triassic period of Earth's history.</span><br>The scene is of an ancient pond that used to exist in Southern Tanzania. A family of Asilisaurus, an early species of dinosaur, is eyeing a family of Stenaulorhynchus Stockleyi from across the water.",
         "<strong>Paleontology Manager</strong>'s title illustration.",
-        "<strong>Rocky In A Blanket</strong>",
+        "<strong>Rocky in a Blanket</strong><br><span class='clickForFullImage'>Click for full image</span>",
         "<strong>Whitaker Trebella, Game Developer</strong>"
     ];
 
@@ -163,7 +155,7 @@
            AnimatePortfolioNav(currentSection);
        }
 
-       SquareOrUnSquareImgs();
+       //SquareOrUnSquareImgs();
     }
 
     function SquareOrUnSquareImgs(){
@@ -181,31 +173,42 @@
     }
 
     
-    SquareOrUnSquareImgs();
+    //SquareOrUnSquareImgs();
 
 
 
 
     //////////////    Lightbox stuff   /////////////////////
 
+    ////////  Variables  /////////
 
+    //generic lightbox variables
+    var lightbox = $("#lightbox");
+    var lightboxLoading = $("#lightbox-loading");
+    var lightboxCaption = $("#lightbox-caption");
+    var lightboxArrowButtons = $("#btn-lightbox-left, #btn-lightbox-right");
+    var lightboxLeft = $("#btn-lightbox-left");
+    var lightboxRight = $("#btn-lightbox-right");
+    var currentImg = 0;
+    var currentGallery = [];
+    var currentCaptions = [];
 
-    var paleoScreenshots = [];
-    for (let i=0; i<6; i++){
-        paleoScreenshots.push("images/gameDeveloper/paleoGame/PaleoGame_" + i + ".jpg");
-    }
-
+    // Paleo Game variables
+    var paleoGallery = [];
     var paleoCaptions = [
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Customize your avatar",
+        "Dig up fauna, flora, and mineral specimens",
+        "Prepare fauna specimens for transport",
+        "Record your findings in your journal",
+        "Discuss the discoveries with your academic advisor",
+        "Analyze your data and reconstruct the past"
     ];
+    var paleoGalleryButton = $("#btn-paleoGame");
 
-    // Add directory path to illustrator image names. Also grab order from illustratorImgsOrder.
-    var illustratorLightbox = [];
+    // Illustrator variables
+    var illustratorPortItems = $("#portfolio-illustrator .portfolio-item");
+    var illustratorMain = $("#portfolio-illustrator .portfolio-main");
+    var illustratorGallery = [];
     var illustratorCaptions = [];
     var ic = [
         "Finish Him!",
@@ -217,48 +220,49 @@
         "Rocky in a Blanket",
         "Whitaker Trebella, Game Developer"
     ];
+
+
+    ///////  Fill gallery arrays  //////////
+    
+    for (let i=0; i<6; i++){
+        paleoGallery.push("images/gameDeveloper/paleoGame/PaleoGame_" + i + ".jpg");
+    }
+
     for (let i=0; i<illustratorImgs.length; i++){
-        illustratorLightbox.push("images/illustrator/" + illustratorImgs[illustratorImgsOrder[i]] + ".jpg");
-        illustratorLightbox[i] = illustratorLightbox[i].replace("_desktop", "");
+        illustratorGallery.push("images/illustrator/" + illustratorImgs[illustratorImgsOrder[i]] + ".jpg");
+        illustratorGallery[i] = illustratorGallery[i].replace("_desktop", "");
 
         illustratorCaptions.push(ic[illustratorImgsOrder[i]]);
     }
 
-
-    var lightboxImg = $("#lightbox-img");
-    var lightboxCaption = $("#lightbox-caption");
-    var lightboxButtons = $("#btn-lightbox-left, #btn-lightbox-right");
-    var lightboxLeft = $("#btn-lightbox-left");
-    var lightboxRight = $("#btn-lightbox-right");
-    console.log(lightboxButtons);
-    lightboxButtons.click(LightboxArrowClick);
+    var paleoGalleryImgElements = [];
+    var illustratorGalleryImgElements = [];
 
 
-    /*  New Lightbox setup
-    1. Default placeholder for LB img is "Loading..." text
-    2. When LB is activated, JS code injects each gallery pic as a new img element, all starting off with "displayNone" class.
-    3. The current img that will be shown has the "displayNone" class toggled on.
-
-    This way, the images load when someone activates LB, and not at page load.
-     */
+    //////  Setting up click events  ///////
+    lightboxArrowButtons.click(LightboxArrowClick);
+    paleoGalleryButton.click(InitializeLightBox);
+    illustratorPortItems.click(InitializeLightBox);
 
 
-    var currentImg = 0;
-    var currentGallery = illustratorLightbox;
-    var currentCaptions = illustratorCaptions;
+    
 
+
+    
     function ResetLightbox(){
         currentImg = 0;
-        if (!lightboxLeft.hasClass("hide")) lightboxLeft.addClass("hide");
-        if (lightboxRight.hasClass("hide")) lightboxRight.removeClass("hide");
         SetLightboxImg(0);
     }
-
     ResetLightbox();
+
+
 
     function LightboxArrowClick(e, imgClick){
         console.log(e.currentTarget);
         e.stopPropagation();
+
+        
+        TurnElementOnOff(currentGallery[currentImg][0], false);
         
 
         if (e.currentTarget.id.includes("left") && currentImg > 0){
@@ -274,52 +278,8 @@
 
     }
 
-    function SetLightboxImg(imgNum){
-        
-        lightboxImg.attr("src", currentGallery[imgNum]);
-        lightboxCaption[0].innerHTML = currentCaptions[imgNum];
+    
 
-        if ((currentImg > 0 && lightboxLeft.hasClass("hide")) || (currentImg == 0 && !lightboxLeft.hasClass("hide"))) 
-            lightboxLeft.toggleClass("hide");
-        if ((currentImg < currentGallery.length - 1 && lightboxRight.hasClass("hide")) || (currentImg == currentGallery.length - 1 && !lightboxRight.hasClass("hide"))) 
-            lightboxRight.toggleClass("hide");
-
-    }
-
-
-    var paleoScreenshotsButton = $("#btn-paleoGame");
-    paleoScreenshotsButton.click(PaleoShotsClick);
-
-    function PaleoShotsClick(e){
-
-        currentGallery = paleoScreenshots;
-        currentCaptions = paleoCaptions;
-
-        ResetLightbox();
-
-        lightbox.toggleClass("displayNone");
-    }
-
-
-
-    var illustratorItems = $("#portfolio-illustrator .portfolio-item");
-    illustratorItems.click(IllustratorItemClick);
-
-    function IllustratorItemClick(e){
-        console.log(e.currentTarget);
-
-        currentGallery = illustratorLightbox;
-        currentCaptions = illustratorCaptions;
-
-        ResetLightbox();
-        currentImg = e.currentTarget.dataset.orderNum;
-        SetLightboxImg(currentImg);
-
-        lightbox.toggleClass("displayNone");
-    }
-
-
-    lightboxImg.click(LightboxImgClick);
     function LightboxImgClick(e){
         console.log(e.currentTarget);
         e.stopPropagation();
@@ -329,7 +289,110 @@
 
 
 
+    function SetLightboxImg(imgNum){
+        
+        if (currentGallery.length > 0){
 
+            if (currentGallery[imgNum][0].dataset.isLoaded){
+                TurnElementOnOff(lightboxLoading[0], false);
+                TurnElementOnOff(currentGallery[imgNum][0], true);
+            } else {
+                TurnElementOnOff(lightboxLoading[0], true);
+            }
+            //lightboxImg.attr("src", currentGallery[imgNum]);
+            lightboxCaption[0].innerHTML = currentCaptions[imgNum];
+        }
+
+        if ((currentImg > 0 && lightboxLeft.hasClass("hide")) || (currentImg == 0 && !lightboxLeft.hasClass("hide"))) 
+            lightboxLeft.toggleClass("hide");
+        if ((currentImg < currentGallery.length - 1 && lightboxRight.hasClass("hide")) || (currentImg == currentGallery.length - 1 && !lightboxRight.hasClass("hide"))) 
+            lightboxRight.toggleClass("hide");
+
+    }
+
+
+
+    function InitializeLightBox(e){
+        console.log(e.currentTarget, "initializing");
+
+        if (e.currentTarget.id == "btn-paleoGame"){
+
+            if (paleoGalleryImgElements.length == 0){
+                for(let i=0; i<paleoGallery.length; i++){
+                    CreateGalleryImg(paleoGallery[i], paleoGalleryImgElements);
+                }
+            }
+
+            currentGallery = paleoGalleryImgElements;
+            console.log(currentGallery);
+            currentCaptions = paleoCaptions;
+
+            ResetLightbox();
+
+        } else if ($.contains(illustratorMain[0], e.currentTarget)){
+
+            if (illustratorGalleryImgElements.length == 0){
+                for(let i=0; i<illustratorGallery.length; i++){
+                    CreateGalleryImg(illustratorGallery[i], illustratorGalleryImgElements);
+                }
+            }
+
+            currentGallery = illustratorGalleryImgElements;
+            currentCaptions = illustratorCaptions;
+
+            ResetLightbox(); 
+            TurnElementOnOff(currentGallery[currentImg][0], false); 
+            currentImg = e.currentTarget.dataset.orderNum;
+            SetLightboxImg(currentImg);          
+        }
+
+        lightbox.toggleClass("displayNone");
+    }
+
+
+    function CreateGalleryImg(whichImg, elementArray){
+
+        var orderNum = elementArray.length;
+        var newImg = $("<img>", {class: "lightbox-img displayNone", src: whichImg});
+        newImg[0].dataset.orderNum = orderNum;
+        newImg[0].dataset.isLoaded = 0;
+        newImg.ready(function(){
+            ImgLoaded(elementArray[orderNum]);
+        });
+        newImg.click(LightboxImgClick);
+
+        elementArray.push(newImg);
+
+        lightboxLoading.after(newImg);
+
+        console.log(newImg);
+    }
+
+    function ImgLoaded(imgElement){
+        imgElement[0].dataset.isLoaded = 1;
+
+        if (currentImg == currentGallery.indexOf(imgElement)){
+            TurnElementOnOff(lightboxLoading[0], false);
+            TurnElementOnOff(imgElement[0], true);
+        }
+    }
+
+    function TurnElementOnOff(el, turnOn){
+        if (turnOn){
+            RemoveClass(el, "displayNone");
+        } else {
+            AddClass(el, "displayNone");
+        }
+    }
+
+    function XOutLightboxClick(e){
+        console.log(e.currentTarget);
+
+        if (e.currentTarget.id == "lightbox"){
+            lightbox.toggleClass("displayNone");
+            TurnElementOnOff(currentGallery[currentImg][0], false);
+        }
+    }
 
 
 
