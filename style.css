@@ -483,29 +483,25 @@ main{
     color:var(--portfolio-light);
 }
 
+
 .socialLinks-wrapper{
-    width:94%;
+    text-align:center;
+    width:100%;
+    margin-left:-100%;
     position:absolute;
     bottom:3.58rem;
-}
 
-.portfolio-nav-wrapper .socialLinks-wrapper{
-    margin-left:-100%;
 }
 
 .socialLinks{
-    width:21.7rem;
     margin:0;
-    margin-left:auto;
-    margin-right:auto;
     padding:0;
 }
 
 .socialLinks li{
-    display:block;
     margin:0.86rem;
-    padding:0.86rem;
-    float:left;
+    padding:0.5rem;
+    display:inline-block;
 }
 
 .socialLinks svg{
@@ -520,7 +516,7 @@ main{
     fill:var(--portfolio-white);
 }
 
-.socialLinks::after{
+.portfolio-nav-wrapper .socialLinks::after{
     content:"";
     width:120%;
     height:1px;
@@ -528,10 +524,11 @@ main{
     display:inline-block;
     border-bottom:1px solid var(--portfolio-light);
 
-    top:-1.5rem;
+    top:-1.3rem;
     left:-4.32rem;
     position:relative;
 }
+
 
 @keyframes portfolio-nav-nameSlideIn{
     0%{
@@ -630,6 +627,14 @@ main{
 
 .btn-backArrow svg{
     stroke:var(--portfolio-light);
+}
+
+.btn-backArrow svg rect{
+    stroke-width:4px;
+}
+
+.btn-backArrow svg path{
+    stroke-width:2px;
 }
 
 .btn-backArrow a{
@@ -837,7 +842,7 @@ figure > .img-caption span{
 }
 
 .game-description{
-    font-size:2.4rem;
+    font-size:2.3rem;
     line-height:140%;
     font-weight:300;
 
@@ -882,6 +887,58 @@ figure > .img-caption span{
 
 .btn-game:hover{
     border-color:var(--portfolio-dark);
+}
+
+
+
+/*************  About Me  *******************/
+
+
+/*social links*/
+
+.aboutMe-socialLinks-wrapper{
+    text-align:center;
+}
+
+.aboutMe-socialLinks{
+    padding:0;
+}
+
+.aboutMe-socialLinks li{
+    display:inline-block;
+    padding:20px 50px;
+}
+
+.aboutMe-socialLinks-wrapper svg{
+    fill:var(--portfolio-dark);
+    width:60px;
+    height:60px;
+    transition-duration:0.3s;
+    transition-timing-function:ease;
+}
+
+.aboutMe-socialLinks-wrapper li:hover svg{
+    fill:var(--portfolio-light);
+}
+
+/* Main Content */
+#portfolio-aboutMe > .portfolio-main{
+    text-align:center;
+    font-size:2.4rem;
+    padding-top:60px;
+}
+
+#portfolio-aboutMe img{
+    max-width:65%;
+    border:1px solid var(--portfolio-light);
+}
+
+#portfolio-aboutMe p{
+    padding:0 10% 0 10%;
+}
+
+#portfolio-aboutMe p a{
+    font-weight:500;
 }
 
 
@@ -989,10 +1046,6 @@ figure > .img-caption span{
     display:flex;
     justify-content:space-evenly;
     align-items:center;
-}
-
-.lightbox-thumbnail{
-    
 }
 
 
@@ -1118,6 +1171,7 @@ figure > .img-caption span{
 
     figure{
         position:static;
+        box-shadow:none;
     }
 
     #portfolio-webDesigner img{
@@ -1193,6 +1247,19 @@ figure > .img-caption span{
 
     #lightbox-thumbnail-wrapper{
         display:none;
+    }
+
+    #portfolio-aboutMe > .portfolio-main{
+        font-size:2.8rem;
+    }
+
+    .aboutMe-socialLinks-wrapper li{
+        padding:20px 30px;
+    }
+
+    .aboutMe-socialLinks-wrapper svg{
+        width:50px;
+        height:50px;
     }
 
 }
