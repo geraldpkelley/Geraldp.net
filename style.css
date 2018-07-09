@@ -487,25 +487,29 @@ main{
     color:var(--portfolio-light);
 }
 
-
 .socialLinks-wrapper{
-    text-align:center;
-    width:100%;
-    margin-left:-100%;
+    width:94%;
     position:absolute;
     bottom:3.58rem;
+}
 
+.portfolio-nav-wrapper .socialLinks-wrapper{
+    margin-left:-100%;
 }
 
 .socialLinks{
+    width:21.7rem;
     margin:0;
+    margin-left:auto;
+    margin-right:auto;
     padding:0;
 }
 
 .socialLinks li{
+    display:block;
     margin:0.86rem;
-    padding:0.5rem;
-    display:inline-block;
+    padding:0.86rem;
+    float:left;
 }
 
 .socialLinks svg{
@@ -520,7 +524,7 @@ main{
     fill:var(--portfolio-white);
 }
 
-.portfolio-nav-wrapper .socialLinks::after{
+.socialLinks::after{
     content:"";
     width:120%;
     height:1px;
@@ -528,11 +532,10 @@ main{
     display:inline-block;
     border-bottom:1px solid var(--portfolio-light);
 
-    top:-1.3rem;
+    top:-1.5rem;
     left:-4.32rem;
     position:relative;
 }
-
 
 @keyframes portfolio-nav-nameSlideIn{
     0%{
@@ -631,14 +634,6 @@ main{
 
 .btn-backArrow svg{
     stroke:var(--portfolio-light);
-}
-
-.btn-backArrow svg rect{
-    stroke-width:4px;
-}
-
-.btn-backArrow svg path{
-    stroke-width:2px;
 }
 
 .btn-backArrow a{
@@ -846,7 +841,7 @@ figure > .img-caption span{
 }
 
 .game-description{
-    font-size:2.3rem;
+    font-size:2.4rem;
     line-height:140%;
     font-weight:300;
 
@@ -895,6 +890,7 @@ figure > .img-caption span{
 
 
 
+<<<<<<< HEAD
 /*************  About Me  *******************/
 
 
@@ -948,6 +944,8 @@ figure > .img-caption span{
 
 
 
+=======
+>>>>>>> parent of 2ff2df6... About Me draft 1 done
 
 
 /************    Lightbox    ****************/
@@ -1051,6 +1049,10 @@ figure > .img-caption span{
     display:flex;
     justify-content:space-evenly;
     align-items:center;
+}
+
+.lightbox-thumbnail{
+    
 }
 
 
@@ -1176,7 +1178,6 @@ figure > .img-caption span{
 
     figure{
         position:static;
-        box-shadow:none;
     }
 
     #portfolio-webDesigner img{
@@ -1252,19 +1253,6 @@ figure > .img-caption span{
 
     #lightbox-thumbnail-wrapper{
         display:none;
-    }
-
-    #portfolio-aboutMe > .portfolio-main{
-        font-size:2.8rem;
-    }
-
-    .aboutMe-socialLinks-wrapper li{
-        padding:20px 30px;
-    }
-
-    .aboutMe-socialLinks-wrapper svg{
-        width:50px;
-        height:50px;
     }
 
 }
