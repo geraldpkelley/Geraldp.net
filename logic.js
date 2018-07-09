@@ -1,17 +1,17 @@
 (function (){
     var currentSection = "";
 
-    $(".menu > li > a").click(MainMenuClick);
+    $(".menu > li > a").on("click", MainMenuClick);
 
-    $(".btn-gameDev, .btn-illustrator, .btn-webDesigner, .btn-aboutMe").click(NavMenuClick);
+    $(".btn-gameDev, .btn-illustrator, .btn-webDesigner, .btn-aboutMe").on("click", NavMenuClick);
 
-    $(".btn-hamburger").click(HamburgerClick);
+    $(".btn-hamburger").on("click", HamburgerClick);
 
-    $(".btn-backArrow").click(NavBackClick);
+    $(".btn-backArrow").on("click", NavBackClick);
 
-    $(".portfolio-main > .btn-x").click(XOutClick);
+    $(".portfolio-main > .btn-x").on("click", XOutClick);
 
-    $("#lightbox, #lightbox .btn-x").click(XOutLightboxClick);
+    $("#lightbox, #lightbox .btn-x").on("click", XOutLightboxClick);
 
     function MainMenuClick(e){
         console.log(e.currentTarget);
@@ -240,9 +240,9 @@
 
 
     //////  Setting up click events  ///////
-    lightboxArrowButtons.click(LightboxArrowClick);
-    paleoGalleryButton.click(InitializeLightBox);
-    illustratorPortItems.click(InitializeLightBox);
+    lightboxArrowButtons.on("click", LightboxArrowClick);
+    paleoGalleryButton.on("click", InitializeLightBox);
+    illustratorPortItems.on("click", InitializeLightBox);
 
 
     
@@ -359,7 +359,7 @@
         newImg.ready(function(){
             ImgLoaded(elementArray[orderNum]);
         });
-        newImg.click(LightboxImgClick);
+        newImg.on("click", LightboxImgClick);
 
         elementArray.push(newImg);
 
