@@ -15,17 +15,17 @@ html{
 
 body,
 html{
+    width:100%;
+    height:100%;
     overflow:hidden;
+    position:relative;
 }
 
 body{
     font-family:'Raleway', sans-serif;
     font-weight:300;
-    width:100%;
-    height:100%;
     box-sizing:border-box;
     margin:0;
-    position:relative;
 }
 
 a{
@@ -140,6 +140,8 @@ main{
     border-bottom:2px solid var(--grey);
 
     white-space:nowrap;
+
+    cursor:pointer;
 }
 
 .menu > li:nth-child(2),
@@ -180,6 +182,8 @@ main{
 
     transition-duration:0.3s;
     transition-timing-function:ease-out;
+
+    cursor:pointer;
 }
 
 .menu a:hover{
@@ -930,6 +934,7 @@ figure > .img-caption span{
 
 #portfolio-aboutMe img{
     max-width:65%;
+    max-height:70%;
     border:1px solid var(--portfolio-light);
 }
 

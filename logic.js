@@ -1,7 +1,7 @@
 (function (){
     var currentSection = "";
 
-    $(".menu > li").click(MainMenuClick);
+    $(".menu > li > a").click(MainMenuClick);
 
     $(".btn-gameDev, .btn-illustrator, .btn-webDesigner, .btn-aboutMe").click(NavMenuClick);
 
@@ -16,7 +16,7 @@
     function MainMenuClick(e){
         console.log(e.currentTarget);
 
-        GoToNewSection("#" +  e.currentTarget.id.replace("btn-mm", "portfolio"), 0);
+        GoToNewSection("#" +  e.currentTarget.parentElement.id.replace("btn-mm", "portfolio"), 0);
     }
 
     function NavMenuClick(e){
@@ -127,14 +127,14 @@
 
     var illustratorElement = $("#portfolio-illustrator .portfolio-main");
     
-    for (let i=0; i<illustratorImgs.length/2; i++){
+    for (var i=0; i<illustratorImgs.length/2; i++){
          var row = $("<div>", {class:"row"});
          illustratorElement.append(row);
     }
     var illustratorRows = $("#portfolio-illustrator .row");
     console.log(illustratorRows);
 
-    for (let i=0; i<illustratorImgs.length; i++){
+    for (var i=0; i<illustratorImgs.length; i++){
         var whichImg = illustratorImgsOrder[i];
         var newFigure = $("<a>", {class:"portfolio-item", href:"#", id:illustratorImgs[whichImg]});
         newFigure[0].dataset.orderNum = i;
@@ -160,12 +160,12 @@
 
     function SquareOrUnSquareImgs(){
         if ($(window).width() > 1000 && !illustratorSqrPieces[0].attr("src").includes("_desktop")){
-            for (let i=0; i<illustratorSqrPieces.length; i++){
+            for (var i=0; i<illustratorSqrPieces.length; i++){
                 var n = illustratorSqrPieces[i].attr("src").indexOf(".jpg");
                 illustratorSqrPieces[i].attr("src", illustratorSqrPieces[i].attr("src").slice(0, n) + "_desktop.jpg");
             }
         } else if ($(window).width() <= 1000 && illustratorSqrPieces[0].attr("src").includes("_desktop")){
-            for (let i=0; i<illustratorSqrPieces.length; i++){
+            for (var i=0; i<illustratorSqrPieces.length; i++){
                 var n = illustratorSqrPieces[i].attr("src").indexOf("_desktop");
                 illustratorSqrPieces[i].attr("src", illustratorSqrPieces[i].attr("src").slice(0, n) + ".jpg");
             }
@@ -224,11 +224,11 @@
 
     ///////  Fill gallery arrays  //////////
     
-    for (let i=0; i<6; i++){
+    for (var i=0; i<6; i++){
         paleoGallery.push("images/gameDeveloper/paleoGame/PaleoGame_" + i + ".jpg");
     }
 
-    for (let i=0; i<illustratorImgs.length; i++){
+    for (var i=0; i<illustratorImgs.length; i++){
         illustratorGallery.push("images/illustrator/" + illustratorImgs[illustratorImgsOrder[i]] + ".jpg");
         illustratorGallery[i] = illustratorGallery[i].replace("_desktop", "");
 
@@ -318,7 +318,7 @@
         if (e.currentTarget.id == "btn-paleoGame"){
 
             if (paleoGalleryImgElements.length == 0){
-                for(let i=0; i<paleoGallery.length; i++){
+                for(var i=0; i<paleoGallery.length; i++){
                     CreateGalleryImg(paleoGallery[i], paleoGalleryImgElements);
                 }
             }
@@ -332,7 +332,7 @@
         } else if ($.contains(illustratorMain[0], e.currentTarget)){
 
             if (illustratorGalleryImgElements.length == 0){
-                for(let i=0; i<illustratorGallery.length; i++){
+                for(var i=0; i<illustratorGallery.length; i++){
                     CreateGalleryImg(illustratorGallery[i], illustratorGalleryImgElements);
                 }
             }
