@@ -976,7 +976,9 @@ figure > .img-caption span{
 #btn-lightbox-left,
 #btn-lightbox-right{
     color:white;
+    font-family:'Times New Roman', Times, serif;
     font-size:9rem;
+    font-weight:500;
     line-height:9rem;
     text-align:right;
     
