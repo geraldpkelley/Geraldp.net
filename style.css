@@ -858,7 +858,7 @@ figure > .img-caption span{
     text-align:center;
     margin-bottom:3rem;
 
-    z-index:1;
+    z-index:0;
 }
 
 .btn-game{
@@ -874,7 +874,7 @@ figure > .img-caption span{
     transition-duration:0.3s;
     transition-timing-function:ease;
 
-    z-index:auto;
+    z-index:1;
 }
 
 .btn-game::before{
@@ -975,14 +975,6 @@ figure > .img-caption span{
 
 #btn-lightbox-left,
 #btn-lightbox-right{
-    color:white;
-    font-family:'Times New Roman', Times, serif;
-    font-size:9rem;
-    font-weight:500;
-    line-height:9rem;
-    text-align:right;
-    
-
     width:13rem;
     height:13rem;
 
@@ -995,13 +987,18 @@ figure > .img-caption span{
     cursor:pointer;
 }
 
+#btn-lightbox-left svg,
+#btn-lightbox-right svg{
+    stroke:white;
+}
+
 #btn-lightbox-right{
     text-align:left;
 }
 
-#btn-lightbox-left:hover,
-#btn-lightbox-right:hover{
-    color:#f58fba;
+#btn-lightbox-left:hover svg,
+#btn-lightbox-right:hover svg{
+    fill:#f58fba;
 }
 
 .hide{
