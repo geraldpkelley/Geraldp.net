@@ -333,6 +333,12 @@ main{
     }
 }
 
+@media (max-height:800px) and (orientation:landscape){
+    main{
+        transform:scale(0.67);
+    }
+}
+
 @media (max-width:900px) and (orientation:portrait){
     main{
         transform:scale(0.6);
