@@ -818,6 +818,10 @@ figure > .img-caption span{
     background:url('images/gameDeveloper/dudeski/Dudeski_icon.png');
 }
 
+.aNightForever{
+    background:url('images/gameDeveloper/aNightForever/ANightForever_icon.png');
+}
+
 .game-img{
     width:512px;
     max-width:40%;

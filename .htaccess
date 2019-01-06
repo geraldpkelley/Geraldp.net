@@ -7,6 +7,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
 redirect 301 /games http://www.geraldp.net/category/portfolio/video-games/
 redirect 301 /art http://www.geraldp.net/2013/02/the-art/
-redirect 301 /abzorb http://www.geraldp.net/abzorb.html
-redirect 301 /chatterbox http://www.geraldp.net/cb/chatterbox.html 
+redirect 301 /abzorb http://abzorbgame.com
+redirect 301 /chatterbox http://chatterbox.click
+redirect 301 /royalassembly http://www.geraldp.net/cardgames/royalassembly_rules.html
 </IfModule>
